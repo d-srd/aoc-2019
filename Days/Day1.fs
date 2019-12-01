@@ -13,9 +13,4 @@ let rec fuelRequirement mass =
     else
         initialRequirement
 
-let solve = 
-    // input |> Seq.sumBy (int >> fuelRequirement)
-    input
-    |> Seq.map int
-    |> Seq.map fuelRequirement
-    |> Seq.sum
+let solve = input |> Seq.sumBy (int >> fuelRequirement)
