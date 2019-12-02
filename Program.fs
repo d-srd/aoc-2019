@@ -4,5 +4,5 @@ open System
 
 [<EntryPoint>]
 let main argv =
-    Day2.solve |> List.iter (printfn "%i")
+    Day2.result
     0 // return an integer exit code
