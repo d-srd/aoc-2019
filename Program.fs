@@ -4,5 +4,5 @@ open System
 
 [<EntryPoint>]
 let main argv =
-    Day2.result
+    printfn "%O" Day2.result
     0 // return an integer exit code
