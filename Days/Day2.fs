@@ -46,13 +46,13 @@ let replaceInput index element x y =
 
 let replaceInputs x y data = data |> List.mapi (fun i p -> replaceInput i p x y)
 
-let result = for i in 0 .. 100 do
-    for j in 0 .. 100 do
-        let currentInput = replaceInputs i j input
-        let result = parse currentInput 0 |> List.item 0
-        // printfn "got result %i" result
-        if result = 19690720 then
-            printfn "%i %i" i j
-            Some {| X = i; Y = j|} |> ignore
-        else
-            None |> ignore
+let result = 
+    for i in 0 .. 100 do
+        for j in 0 .. 100 do
+            let currentInput = replaceInputs i j input
+            let result = parse currentInput 0 |> List.item 0
+            if result = 19690720 then
+                printfn "%i %i" i j
+                Some {| X = i; Y = j|} |> ignore
+            else
+                None |> ignore
