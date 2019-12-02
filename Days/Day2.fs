@@ -46,7 +46,7 @@ let replaceInput index element x y =
 
 let replaceInputs x y data = data |> List.mapi (fun i p -> replaceInput i p x y)
 
-let result pair input = 
+let matchesResult pair input = 
     let (i, j) = pair
     let currentInput = replaceInputs i j input
     let result = parse currentInput 0 |> List.item 0
@@ -55,11 +55,15 @@ let result pair input =
     else
         None
 
-let solve data =
+let findSolution data =
     let inputs = seq {
         for i in 0 .. 100 do
             for j in 0 .. 100 do
                 yield (i, j)
     }
     inputs
-    |> Seq.map (fun p -> result p data)
+    |> Seq.map (fun p -> matchesResult p data)
+    |> Seq.find Option.isSome
+    |> Option.get
+
+let result = findSolution input
